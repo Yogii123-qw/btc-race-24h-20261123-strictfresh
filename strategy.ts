@@ -65,7 +65,7 @@ export class StrictFresh {
   private sumRegB = 0n;
   private prevAbove: boolean | null = null;
   private lastCrossBar = -1;
-  private prevBandOk: boolean | null = null;
+  private prevBandOk = false;
   private lastBandBar = -1;
   private lastExitBar = -1000000;
   private entryBar = -1;
@@ -151,7 +151,7 @@ export class StrictFresh {
     const stretched =
       close * BPS * slow > this.sumSlow * BigInt(BPS + BigInt(p.extBps));
     const bandOk =
-      (this.sumFast * slow - this.sumSlow * fast) * BPS >=
+      (this.sumFast * slow - this.sumSlow * fast) * BPS >
       BigInt(p.bandBps) * this.sumSlow * fast;
     if (this.prevBandOk === false && bandOk) this.lastBandBar = bar;
     this.prevBandOk = bandOk;

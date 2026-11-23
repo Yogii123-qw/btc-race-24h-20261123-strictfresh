@@ -1,10 +1,10 @@
-// Strict-fresh SMA cross with a long-trend regime filter.
+// Strict-fresh SMA cross, long only, full size.
 //
 // Reads one 1-minute cbBTC/USDC bar per batch and answers with at most one
 // order: a full-size buy on a fresh fast-over-slow average cross, or a full
-// sell on a trailing stop, a hard stop, a cross back, or a maximum hold.
-// See strategy.ts for the rules. The wire protocol is owned by the vendored
-// shim; this file only turns its state into orders.
+// sell on a trailing stop, a hard stop, or a maximum hold. See strategy.ts
+// for the rules. The wire protocol is owned by the vendored shim; this file
+// only turns its state into orders.
 
 import { runBars } from './vendor/makefun-bars.ts';
 import { StrictFresh, DEFAULT_PARAMS } from './strategy.ts';
